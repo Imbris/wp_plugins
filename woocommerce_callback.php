@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: WooCommerce Callback Button
+Plugin Name: WooCommerce Callback Button (Trial)
 Plugin URI: 
-Description: Добавляет кнопку обратного звонка к магазину WooCommerce. Для корректной работы всплывающего окна необходим плагин Easy FancyBox
+Description: Добавляет кнопку обратного звонка к магазину WooCommerce
 Version: 1.0
 Author: Imbris
 Author URI: 
@@ -39,44 +39,27 @@ define ( CALLBACK_LINK, 'callback_options');
 //$option_value = 'что-то написано!';
 //add_option('wccb_popup_text', $option_value);
 
+add_option( 'wccb_trial_since', time());
 
-//подключаем перевод
-add_action('init', 'woocommerce_callback_translate');
- 
-function woocommerce_callback_translate() {
-          load_plugin_textdomain('woocommerce_callback', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/');
-}
-do_action('woocommerce_callback_translate');
 
-//подключаем стили
-function callback_styles()
-{
-    // Register the style like this for a plugin:
-    wp_register_style( 'callback_style', plugins_url( '/style.css', __FILE__ ));
+define (WCCB_MIN, 60);
+define (WCCB_HOUR, 60*WCCB_MIN);
+define (WCCB_DAY, 24*WCCB_HOUR );
+define (WCCB_WEEK, 7*WCCB_DAY);
 
-    // For either a plugin or a theme, you can then enqueue the style:
-    wp_enqueue_style( 'callback_style' );
-}
-add_action( 'wp_enqueue_scripts', 'callback_styles', 99 );
+define (WCCB_TIME, 55*WCCB_MIN + get_option('wccb_trial_since') - time());
 
-function callback_button() {
-    ?>
-    <a style="line-height: 19px;" class="fancybox button-3 call_back trans-1 custom-font-1" href="#contact_form_pop"><span style="background: none; padding: 5px 15px;"><?php _e('Сallback', 'woocommerce_callback'); ?></span></a>
-            <div style="display:none" class="fancybox-hidden">
-             <div id="contact_form_pop">     
-                <?php echo do_shortcode(get_option('wccb_popup_text')); ?>           
-                <?php //echo do_shortcode('[contact-form-7 id="2345" title="Обратный звонок"]');?>
-             </div>
-           </div>
-           <br clear="all"/>
-    <?php
-    }
-
-    //регистрируем hook для кнопки на странице товара
-    add_action('woocommerce_before_add_to_cart_form','callback_button');
-
-    //применяем hook
-    do_action('callback_button');
+if (WCCB_TIME<0) {
     
-    include_once('admin/main.php');
+    add_filter( 'plugin_action_links', 'filter_timelimit_link', 10, 4 );
+    
+    function filter_timelimit_link ($links, $file) {
+    if ( $file != WPWCCB_PLUGIN_DIR) return $links;
+    
+    $link = '<a href="mailto:d.p.vainstein@gmail.com">восстановить</a>';
+    array_unshift($links, $link);
+    return $links;
+    }
+    
+} else include_once('main/callback.php');
 ?>

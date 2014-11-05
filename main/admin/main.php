@@ -17,7 +17,6 @@ function callback_add_menu() {
 function register_wc_callback_settings() {
   register_setting( 'wc-callback' , 'wccb_popup_text' );
   register_setting( 'wc-callback' , 'wccb_replace_cart' );
-  register_setting( 'wc-callback' , 'licence_key' );
 }
 
 //добавляем ссылку на страницу настроек со страницы плагинов
