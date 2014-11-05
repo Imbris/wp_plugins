@@ -1,4 +1,4 @@
-z-tec
+plugins for wordpress
 =====
 
 plugins for z-tec wordpress
