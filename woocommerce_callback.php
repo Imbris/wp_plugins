@@ -53,9 +53,14 @@ function callback_styles()
 {
     // Register the style like this for a plugin:
     wp_register_style( 'callback_style', plugins_url( '/style.css', __FILE__ ));
+    
+    if(get_option('wccb_disable_cart')) {
+        wp_register_style( 'disable_cart', plugins_url( '/disable_cart.css', __FILE__ ));
+    }
 
     // For either a plugin or a theme, you can then enqueue the style:
     wp_enqueue_style( 'callback_style' );
+    wp_enqueue_style( 'disable_cart' );
 }
 add_action( 'wp_enqueue_scripts', 'callback_styles', 99 );
 
@@ -78,5 +83,22 @@ function callback_button() {
     //применяем hook
     do_action('callback_button');
     
+    //включение корзины для всех товаров
+    /*add_filter( 'woocommerce_is_purchasable', 'everything_is_purchasable', 10, 4 );
+    
+    function everything_is_purchasable($purchasable, $this) {
+        return true;
+    }*/
+    
+    //принудительное добавление нулевой стоимости товарам без указания цены
+    if(get_option('wccb_fill_blank_price')) {
+        add_filter( 'woocommerce_get_price', 'conv_blank_to_free', 10, 4 );
+    }
+    
+    function conv_blank_to_free($price) {
+        if ( $price ==='' ) { $price = 0; }
+        return $price;
+    }
+        
     include_once('admin/main.php');
 ?>

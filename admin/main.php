@@ -17,7 +17,9 @@ function callback_add_menu() {
 function register_wc_callback_settings() {
   register_setting( 'wc-callback' , 'wccb_popup_text' );
   register_setting( 'wc-callback' , 'wccb_replace_cart' );
-  register_setting( 'wc-callback' , 'licence_key' );
+  //register_setting( 'wc-callback' , 'licence_key' );
+  register_setting( 'wc-callback' , 'wccb_fill_blank_price' );
+  register_setting( 'wc-callback' , 'wccb_disable_cart' );
 }
 
 //добавляем ссылку на страницу настроек со страницы плагинов
@@ -46,6 +48,18 @@ function callback_options_page() {
              <td>
                  <textarea name="wccb_popup_text" rows="5" cols="50"><?php echo get_option('wccb_popup_text'); ?></textarea>
                  <p class="description"><?php _e('Insert form shortcode here','woocommerce_callback') ?></p>
+             </td>
+        </tr>
+        <tr>
+             <th scope="row"><?php _e('Convert blank price to free','woocommerce_callback') ?></th>
+             <td>
+                 <input type="checkbox" name="wccb_fill_blank_price" value="1" <?php if(get_option('wccb_fill_blank_price')):?>checked="checked"<?php endif;?> />
+             </td>
+        </tr>
+        <tr>
+             <th scope="row"><?php _e('Disable cart','woocommerce_callback') ?></th>
+             <td>
+                 <input type="checkbox" name="wccb_disable_cart" value="1" <?php if(get_option('wccb_disable_cart')):?>checked="checked"<?php endif;?> />
              </td>
         </tr>
         <tr>
