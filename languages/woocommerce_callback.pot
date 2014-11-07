@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Callback\n"
-"POT-Creation-Date: 2014-10-29 23:56+0300\n"
-"PO-Revision-Date: 2014-10-30 00:02+0300\n"
+"POT-Creation-Date: 2014-11-07 20:06+0300\n"
+"PO-Revision-Date: 2014-11-07 20:07+0300\n"
 "Last-Translator: \n"
 "Language-Team: Imbris <d.p.vainstein@gmail.com>\n"
 "Language: ru_RU\n"
@@ -17,6 +17,34 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: woocommerce_callback.php:43
+#: admin/main.php:33 admin/main.php:42
+msgid "Settings"
+msgstr ""
+
+#: admin/main.php:47
+msgid "Popup window contents"
+msgstr ""
+
+#: admin/main.php:50
+msgid "Insert form shortcode here"
+msgstr ""
+
+#: admin/main.php:54
+msgid "Convert blank price to free"
+msgstr ""
+
+#: admin/main.php:60
+msgid "Disable cart"
+msgstr ""
+
+#: admin/main.php:66
+msgid "Replace \"Proceed to Checkout\" button in the cart"
+msgstr ""
+
+#: admin/main.php:73
+msgid "Save Changes"
+msgstr ""
+
+#: woocommerce_callback.php:69
 msgid "Сallback"
 msgstr ""

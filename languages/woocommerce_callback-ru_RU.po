@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Callback\n"
-"POT-Creation-Date: 2014-10-29 23:56+0300\n"
-"PO-Revision-Date: 2014-10-30 00:05+0300\n"
+"POT-Creation-Date: 2014-11-07 20:06+0300\n"
+"PO-Revision-Date: 2014-11-07 20:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: Imbris <d.p.vainstein@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,34 @@ msgstr ""
 "Language: ru_RU\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: woocommerce_callback.php:43
+#: admin/main.php:33 admin/main.php:42
+msgid "Settings"
+msgstr "Настройки"
+
+#: admin/main.php:47
+msgid "Popup window contents"
+msgstr "Содержание всплывающего окна"
+
+#: admin/main.php:50
+msgid "Insert form shortcode here"
+msgstr "разместите здесь короткий код (shortcode) формы"
+
+#: admin/main.php:54
+msgid "Convert blank price to free"
+msgstr "Считать стоимость нулевой если не указана"
+
+#: admin/main.php:60
+msgid "Disable cart"
+msgstr "Скрыть корзину"
+
+#: admin/main.php:66
+msgid "Replace \"Proceed to Checkout\" button in the cart"
+msgstr "Заменить кнопку \"Перейти к оплате\""
+
+#: admin/main.php:73
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: woocommerce_callback.php:69
 msgid "Сallback"
 msgstr "Задать вопрос"
