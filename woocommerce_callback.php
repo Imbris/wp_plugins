@@ -3,7 +3,7 @@
 Plugin Name: WooCommerce Callback Button
 Plugin URI: 
 Description: Добавляет кнопку обратного звонка к магазину WooCommerce. Для корректной работы всплывающего окна необходим плагин Easy FancyBox
-Version: 1.0
+Version: 1.1
 Author: Imbris
 Author URI: 
 */
@@ -66,11 +66,10 @@ add_action( 'wp_enqueue_scripts', 'callback_styles', 99 );
 
 function callback_button() {
     ?>
-    <a style="line-height: 19px;" class="fancybox button-3 call_back trans-1 custom-font-1" href="#contact_form_pop"><span style="background: none; padding: 5px 15px;"><?php _e('Сallback', 'woocommerce_callback'); ?></span></a>
+    <a style="line-height: 19px;" class="fancybox-inline button-3 call_back trans-1 custom-font-1" href="#contact_form_pop"><span style="background: none; padding: 5px 15px;"><?php _e('Сallback', 'woocommerce_callback'); ?></span></a>
             <div style="display:none" class="fancybox-hidden">
              <div id="contact_form_pop">     
                 <?php echo do_shortcode(get_option('wccb_popup_text')); ?>           
-                <?php //echo do_shortcode('[contact-form-7 id="2345" title="Обратный звонок"]');?>
              </div>
            </div>
            <br clear="all"/>
